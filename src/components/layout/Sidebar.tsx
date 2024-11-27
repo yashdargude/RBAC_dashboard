@@ -1,20 +1,13 @@
 import { FC, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+
 import { Separator } from "@/components/ui/separator";
 import {
   Home,
   Users,
   Shield,
   FileText,
-  Menu,
   Settings,
   LogOut,
   PanelLeftClose,
@@ -104,7 +97,7 @@ const SidebarNav: FC<{ collapsed: boolean }> = ({ collapsed }) => {
 };
 
 const Sidebar: FC<SidebarProps> = ({ className }) => {
-  const [open, setOpen] = useState(false);
+  //   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
   return (

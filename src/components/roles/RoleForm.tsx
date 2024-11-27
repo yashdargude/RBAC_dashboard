@@ -1,6 +1,6 @@
 // src/components/roles/RoleForm.tsx
 import { FC } from "react";
-import { Role, Resource } from "@/lib/types";
+import { Role, Resource, Permission } from "@/lib/types";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -35,20 +36,20 @@ export const RoleForm: FC<RoleFormProps> = ({
   onClose,
   onSubmit,
 }) => {
-  const form = useForm({
+  const form = useForm<Role>({
     defaultValues: initialValues || {
       name: "",
       description: "",
-      permissions: {},
+      permissions: {} as Record<string, Permission[]>,
     },
   });
 
   const handlePermissionChange = (
     resource: string,
-    permission: string,
+    permission: Permission,
     checked: boolean
   ) => {
-    const currentPermissions = form.getValues("permissions");
+    const currentPermissions = form.getValues("permissions") || {};
     const resourcePermissions = currentPermissions[resource] || [];
 
     const updatedPermissions = checked

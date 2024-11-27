@@ -47,9 +47,11 @@ export const PermissionMatrix: FC<PermissionMatrixProps> = ({
                   permission as Permission
                 ) && (
                   <Checkbox
-                    checked={selectedPermissions[resource.id]?.includes(
-                      permission as Permission
-                    )}
+                    checked={
+                      selectedPermissions[resource.id]?.includes(
+                        permission as Permission
+                      ) || false
+                    }
                     onCheckedChange={(checked) => {
                       onChange(
                         resource.id,
